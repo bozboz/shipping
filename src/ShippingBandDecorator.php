@@ -2,7 +2,7 @@
 
 namespace Bozboz\Ecommerce\Shipping;
 
-use Bozboz\Admin\Decorators\ModelAdminDecorator;
+use Bozboz\Admin\Base\ModelAdminDecorator;
 use Bozboz\Admin\Fields\TextField;
 
 class ShippingBandDecorator extends ModelAdminDecorator

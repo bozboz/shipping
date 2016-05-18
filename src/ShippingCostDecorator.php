@@ -5,7 +5,7 @@ namespace Bozboz\Ecommerce\Shipping;
 use Bozboz\Admin\Base\ModelAdminDecorator;
 use Bozboz\Admin\Fields\SelectField;
 use Bozboz\Admin\Fields\TextField;
-use Bozboz\Ecommerce\Fields\PriceField;
+use Bozboz\Ecommerce\Products\Pricing\PriceField;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
@@ -26,13 +26,13 @@ class ShippingCostDecorator extends ModelAdminDecorator
 		return [
 			new SelectField('shipping_method_id', [
 				'label' => 'Shipping Method',
-				'options' => $instance->method()->getRelated()->lists('name', 'id')
+				'options' => $instance->method()->getRelated()->pluck('name', 'id')
 			]),
 			new SelectField('country', [
-				'options' => [null => 'Select'] + DB::table('countries')->lists('country', 'code')
+				'options' => [null => 'Select'] + DB::table('countries')->pluck('country', 'code')
 			]),
 			new SelectField('region', [
-				'options' => [null => 'Select'] + DB::table('regions')->lists('region', 'code')
+				'options' => [null => 'Select'] + DB::table('regions')->pluck('region', 'code')
 			]),
 			new TextField('from_weight'),
 			new PriceField('price'),
@@ -67,7 +67,7 @@ class ShippingCostDecorator extends ModelAdminDecorator
 
 	public function getCreateForMethodUrl($instance)
 	{
-		return URL::action('Bozboz\Ecommerce\Http\Controllers\Admin\ShippingCostController@createForMethod', [
+		return URL::action('\Bozboz\Ecommerce\Shipping\Http\Controllers\Admin\ShippingCostController@createForMethod', [
 			'method' => $instance->getKey()
 		]);
 	}

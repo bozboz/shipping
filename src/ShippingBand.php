@@ -2,10 +2,10 @@
 
 namespace Bozboz\Ecommerce\Shipping;
 
-use Bozboz\Admin\Models\Base;
+use Bozboz\Admin\Base\Model;
 use Bozboz\StandardValidator;
 
-class ShippingBand extends Base
+class ShippingBand extends Model
 {
 	protected $fillable = ['name'];
 
