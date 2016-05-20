@@ -6,7 +6,7 @@
         }
     },
     "require": {
-        "bozboz/orders": "1.*@dev"
+        "bozboz/orders": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*"
