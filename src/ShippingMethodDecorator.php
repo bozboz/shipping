@@ -7,8 +7,8 @@ use Bozboz\Admin\Fields\BelongsToField;
 use Bozboz\Admin\Fields\CheckboxField;
 use Bozboz\Admin\Fields\TextField;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\HTML;
 use Illuminate\Support\Str;
+use HTML;
 
 class ShippingMethodDecorator extends ModelAdminDecorator
 {

@@ -5,6 +5,9 @@
             "Bozboz\\Ecommerce\\Shipping\\": "src/"
         }
     },
+    "require": {
+        "bozboz/orders": "1.*:@dev"
+    },
     "require-dev": {
         "phpunit/phpunit": "4.*"
     },

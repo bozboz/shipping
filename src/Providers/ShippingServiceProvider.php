@@ -15,10 +15,6 @@ class ShippingServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        // $this->app->bind(
-        //     \Bozboz\Ecommerce\Products\Contracts\Product::class,
-        //     \Bozboz\Ecommerce\Products\Product::class
-        // );
     }
 
     public function boot()
