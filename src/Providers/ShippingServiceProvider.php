@@ -1,6 +1,6 @@
 <?php
 
-namespace Bozboz\Ecommerce\Products\Providers;
+namespace Bozboz\Ecommerce\Shipping\Providers;
 
 use Bozboz\Ecommerce\Cart\Cart;
 use Bozboz\Ecommerce\Cart\CartObserver;
