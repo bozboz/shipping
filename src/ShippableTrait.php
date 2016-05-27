@@ -13,4 +13,9 @@ trait ShippableTrait
     {
         return $this->belongsTo(ShippingBand::class);
     }
+
+    public function calculateWeight($quantity)
+    {
+        return $this->weight * $quantity;
+    }
 }
