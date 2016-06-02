@@ -60,7 +60,7 @@ class ShippingCost extends Model
 	 */
 	protected function regionFromCountry($country)
 	{
-		return DB::table('countries')->where('code', $country)->pluck('region');
+		return DB::table('countries')->where('code', $country)->value('region');
 	}
 
 
