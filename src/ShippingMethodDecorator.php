@@ -38,20 +38,7 @@ class ShippingMethodDecorator extends ModelAdminDecorator
 			'Name' => $instance->name . ($instance->is_default ? ' <strong>(x)</strong>' : ''),
 			'Band' => $instance->band ? $instance->band->name : '-',
 			'Costs' => $this->getCosts($instance),
-			'' => $this->getNewCostButton($instance)
 		];
-	}
-
-	protected function getNewCostButton($instance)
-	{
-		$url = $this->shippingCost->getCreateForMethodUrl($instance);
-
-		return <<<HTML
-			<a class="btn btn-success btn-sm" type="submit" href="$url">
-				<i class="fa fa-plus-square"></i>
-				Add Cost
-			</a>
-HTML;
 	}
 
 	private function getCosts($instance)
@@ -75,7 +62,7 @@ HTML;
 	public function modifyListingQuery(Builder $query)
 	{
 		$query
-			->with('costs')
+			->with('costs', 'band')
 			->orderBy('shipping_band_id')
 			->orderBy('is_default', 'DESC')
 			->orderBy('name', 'ASC');

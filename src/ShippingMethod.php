@@ -6,7 +6,7 @@ use Bozboz\Admin\Base\Model;
 
 class ShippingMethod extends Model
 {
-	protected $fillable = ['name', 'is_default', 'shipping_band_id'];
+	protected $fillable = ['name', 'is_default', 'shipping_band_id', 'description'];
 
 	public function getValidator()
 	{

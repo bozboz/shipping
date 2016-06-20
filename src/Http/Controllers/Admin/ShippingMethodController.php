@@ -4,6 +4,9 @@ namespace Bozboz\Ecommerce\Shipping\Http\Controllers\Admin;
 
 use Bozboz\Admin\Http\Controllers\ModelAdminController;
 use Bozboz\Admin\Reports\Actions\CreateAction;
+use Bozboz\Admin\Reports\Actions\Permissions\IsValid;
+use Bozboz\Admin\Reports\Actions\Presenters\Link;
+use Bozboz\Admin\Reports\Actions\Presenters\Urls\Custom;
 use Bozboz\Admin\Reports\Report;
 use Bozboz\Ecommerce\Shipping\ShippingMethodDecorator;
 
@@ -21,15 +24,16 @@ class ShippingMethodController extends ModelAdminController
 	protected function getReportActions()
 	{
 		return [
-			new CreateAction(
+			$this->actions->create(
 				$this->getActionName('create'),
 				[$this, 'canCreate'],
-				['label' => 'New ' . $this->decorator->getHeading(), 'class' => 'space-left pull-right btn btn-sm- btn-success']
+				'New ' . $this->decorator->getHeading(),
+				['class' => 'space-left pull-right btn btn-sm- btn-success']
 			),
-			new CreateAction(
+			$this->actions->create(
 				$this->bands->getActionName('create'),
 				[$this->bands, 'canCreate'],
-				['label' => 'New ' . $this->bands->decorator->getHeading()]
+				'New ' . $this->bands->decorator->getHeading()
 			),
 		];
 	}
@@ -37,7 +41,15 @@ class ShippingMethodController extends ModelAdminController
 	protected function getRowActions()
 	{
 		return array_merge([
-			// new CreateAction(),
+			$this->actions->custom(
+				new Link(
+					'\Bozboz\Ecommerce\Shipping\Http\Controllers\Admin\ShippingCostController@createForMethod',
+					'Add Cost',
+					'fa fa-plus',
+					['class' => 'btn-success']
+				),
+				new IsValid([$this, 'canCreate'])
+			),
 		], parent::getRowActions());
 	}
 }
