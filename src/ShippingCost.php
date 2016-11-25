@@ -10,7 +10,15 @@ class ShippingCost extends Model
 {
 	use PriceTrait;
 
-	protected $fillable = ['country', 'region', 'from_weight', 'price', 'shipping_method_id'];
+	protected $fillable = [
+		'country',
+		'region',
+		'from_weight',
+		'price',
+		'shipping_method_id',
+		'tax_rate',
+		'price_includes_tax'
+	];
 
 	public function getValidator()
 	{
