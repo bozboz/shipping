@@ -21,7 +21,7 @@ class CreateShippingCostsTable extends Migration {
 			$table->string('region', 2);
 			$table->integer('from_weight');
 			$table->integer('shipping_method_id')->unsigned();
-			$table->integer('price_pence');
+			$table->integer('price_pence_ex_vat');
 			$table->timestamps();
 		});
 	}
