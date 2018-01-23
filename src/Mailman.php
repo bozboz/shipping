@@ -3,8 +3,9 @@
 namespace Bozboz\Ecommerce\Shipping;
 
 use Bozboz\Ecommerce\Orders\Order;
-use Bozboz\Ecommerce\Shipping\OrderableShippingMethod;
 use Illuminate\Support\Collection;
+use Bozboz\Ecommerce\Orders\Orderable;
+use Bozboz\Ecommerce\Shipping\OrderableShippingMethod;
 
 /**
  * The mailman class is responsible for setting and retrieving shipping methods
@@ -89,7 +90,7 @@ class Mailman
 	 * @param  Bozboz\Ecommerce\Shipping\OrderableShippingMethod  $shipping
 	 * @return void
 	 */
-	public function setShippingMethod(Order $order, OrderableShippingMethod $shipping)
+	public function setShippingMethod(Order $order, Orderable $shipping)
 	{
 		$this->deleteExistingShippingItem($order, $shipping);
 
@@ -104,7 +105,7 @@ class Mailman
 	 * @param  Bozboz\Ecommerce\Shipping\OrderableShippingMethod  $shipping
 	 * @return boolean
 	 */
-	protected function deleteExistingShippingItem(Order $order, OrderableShippingMethod $shipping)
+	protected function deleteExistingShippingItem(Order $order, Orderable $shipping)
 	{
 		foreach($order->items()->with('orderable')->get() as $item) {
 			if ($item->orderable instanceof $shipping &&

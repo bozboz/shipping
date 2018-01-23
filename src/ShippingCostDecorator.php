@@ -2,12 +2,14 @@
 
 namespace Bozboz\Ecommerce\Shipping;
 
-use Bozboz\Admin\Base\ModelAdminDecorator;
-use Bozboz\Admin\Fields\SelectField;
 use Bozboz\Admin\Fields\TextField;
-use Bozboz\Ecommerce\Products\Pricing\PriceField;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Bozboz\Admin\Fields\SelectField;
+use Bozboz\Admin\Base\ModelAdminDecorator;
+use Bozboz\Admin\Reports\Filters\RelationFilter;
+use Bozboz\Ecommerce\Products\Pricing\PriceField;
+use Bozboz\Ecommerce\Shipping\ShippingMethodDecorator;
 
 class ShippingCostDecorator extends ModelAdminDecorator
 {
@@ -18,7 +20,7 @@ class ShippingCostDecorator extends ModelAdminDecorator
 
 	public function getColumns($instance)
 	{
-		// Todo: implement
+		return ['Name' => $this->getLabel($instance)];
 	}
 
 	public function getFields($instance)
@@ -70,5 +72,12 @@ class ShippingCostDecorator extends ModelAdminDecorator
 		return URL::action('\Bozboz\Ecommerce\Shipping\Http\Controllers\Admin\ShippingCostController@createForMethod', [
 			'method' => $instance->getKey()
 		]);
+	}
+
+	public function getListingFilters()
+	{
+	    return [
+	    	new RelationFilter($this->model->method(), app(ShippingMethodDecorator::class)),
+	    ];
 	}
 }
