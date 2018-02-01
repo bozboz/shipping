@@ -9,5 +9,5 @@ interface Shippable
      *
      * @return Bozboz\Ecommerce\Shipping\ShippingBand
      */
-    public function ShippingBand();
+    public function shippingBand();
 }
