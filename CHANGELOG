@@ -3,3 +3,6 @@
 ## v1.0.0 (2018-08-17)
 Version used by sites such as Drusillas and Benton as of July 2018, before updates made for Wired Sussex project.
 These sites should be upadated to use this version rather than dev-master.
+
+## v1.0.1 (2018-08-22)
+Update Orders package dependancy to remove Benton fix
