@@ -6,3 +6,6 @@ These sites should be upadated to use this version rather than dev-master.
 
 ## v1.0.1 (2018-08-22)
 Update Orders package dependancy to remove Benton fix
+
+## v1.0.2 (2018-08-24)
+Updated Orders package to remove CustomerInterface change
